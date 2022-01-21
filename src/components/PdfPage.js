@@ -39,7 +39,7 @@ const PdfPage = ({ data, qrcode }) => {
           </View>
           <View style={styles.innerView}>
             <View style={{ width: 230, height: 230, }}>
-              <Image source={{ uri: qrcode }} />
+              <Image alt = "" source={{ uri: qrcode }} />
             </View>
           </View>
         </View>

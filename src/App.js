@@ -23,7 +23,6 @@ function App() {
             setQrCodeUrl(qrCodeDataUri)
             setShow(!show)
           }
-
         }} />
         <input className='btn' type="file" accept='.xls' color='blue' onChange={(e) => {
           const file = e.target.files[0];
@@ -37,10 +36,12 @@ function App() {
         <LazyDownloadPDFButton disabled={!isSelectedFile} exceldata={excelData} qrCodeUrl={qrCodeUrl} />
       </div>
 
+      
       <div id="main-content" style={{ borderTopWidth: 2, borderTopStyle: 'solid', borderColor: 'gray' }}>
         {isSelectedFile === false && <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}><span>Seleziona un file con estensione: ".xls"</span></div>}
         {show ? <PdfPages exceldata={excelData} qrCodeUrl={qrCodeUrl} /> : (isSelectedFile === true && excelData.map(data => <RowDetail row={data} />))}
       </div>
+      
       <div id="footer"></div>
     </div >
   );
