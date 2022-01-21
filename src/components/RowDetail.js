@@ -5,7 +5,6 @@ import useWindowSize from '../resize';
 
 
 const RowDetail = ({ row }) => {
-    const size = useWindowSize();
     return (
         <div id='row-container'>
             <div id='flexContainer'>
@@ -17,7 +16,7 @@ const RowDetail = ({ row }) => {
                         <p>{row.GTIN}</p>
                     </div>
                     <div style={{fontSize:'0.9vw'}}>
-                        <p>{row .КодМаркировки}</p>
+                        <p>{row.КодМаркировки}</p>
                     </div>   
                 </div >
                 <div id='right'>
