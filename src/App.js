@@ -14,7 +14,11 @@ function App() {
 
   return (
     <div id="container" style={{ width: '100%', height: '100%', minHeight: '100%', minWidth: '100%' }}>
+<<<<<<< HEAD
       <div id="btn-container" style={{display:'flex',justifyContent:'center',alignItems:'center',minHeight:180,minWidth:1000}} >
+=======
+      <div id="btn-container" style={{display:'flex',justifyContent:'center',alignItems:'center',minHeight:180,minWidth:1000}}>
+>>>>>>> b73ba4d65b29fe4507af427e9492a3646a117822
         <input disabled={!isSelectedFile} className='btn' value={show ? 'Nascondi anteprima Pdf' : 'Mostra anteprima Pdf'} type='button' onClick={() => {
           if (isSelectedFile === true) {
             const qrCodeCanvas = document.querySelectorAll('canvas');
