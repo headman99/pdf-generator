@@ -15,7 +15,8 @@ const RowDetail = ({ row }) => {
                         <p>{row.GTIN}</p>
                     </div>
                     <div style={{fontSize:'0.9vw'}}>
-                        <p>{row.КодМаркировки}</p>
+                        <p>{`(${row.КодМаркировки.substr(0,2)})${row.КодМаркировки.substr(2,14)}(${row.КодМаркировки.substr(16,2)})${row.КодМаркировки.substr(18,13)}`}</p>
+                        
                     </div>   
                 </div >
                 <div id='right'>

@@ -46,7 +46,7 @@ const PdfPage = ({ data, qrcode }) => {
 
         <View style={styles.mainView2}>
           <View>
-            <Text style={styles.text2}>{data.КодМаркировки}</Text>
+            <Text style={styles.text2}>{`(${data.КодМаркировки.substr(0,2)})${data.КодМаркировки.substr(2,14)}(${data.КодМаркировки.substr(16,2)})${data.КодМаркировки.substr(18,13)}`}</Text>
           </View>
         </View>
       </View>
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   text2: {
-
+    fontSize:20,
   },
   mainView1: {
     flex: 1,
@@ -72,10 +72,11 @@ const styles = StyleSheet.create({
     flexDirection:'row'
   },
   mainView2:{
-    flex:0.4,
+    flex:0.3,
     display:'flex',
-    justifyContent:'center',
-    alignItems:'center'
+    justifyContent:'flex-end',
+    flexDirection:'row'
+    
   },
   innerView:{
     flex:1,
