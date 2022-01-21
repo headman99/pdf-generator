@@ -42,7 +42,7 @@ function App() {
         {show ? <PdfPages exceldata={excelData} qrCodeUrl={qrCodeUrl} /> : (isSelectedFile === true && excelData.map(data => <RowDetail row={data} />))}
       </div>
       
-      <div id="footer"></div>
+      <div id="footer" style={show?{display:'none'}:null}></div>
     </div >
   );
 }

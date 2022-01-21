@@ -1,7 +1,6 @@
 import React from 'react';
 import '../CSS/RowDetail.css'
 import QRCode from "qrcode.react";
-import useWindowSize from '../resize';
 
 
 const RowDetail = ({ row }) => {
