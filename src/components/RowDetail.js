@@ -3,7 +3,7 @@ import '../CSS/RowDetail.css'
 import QRCode from "qrcode.react";
 
 
-const RowDetail = ({ row }) => {
+const RowDetail = ({ row}) => { 
     return (
         <div id='row-container'>
             <div id='flexContainer'>
