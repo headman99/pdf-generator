@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PdfPages from './components/PdfPages';
 import '../src/CSS/App.css'
 import { LazyDownloadPDFButton } from './components/LazyDownloadPDFButton ';
@@ -11,15 +11,26 @@ function App() {
   const [excelData, setExcelData] = useState([]);
   const [qrCodeUrl, setQrCodeUrl] = useState([]);
   const [isSelectedFile, setIsSelectedFile] = useState(null);
+
+  /*useEffect(() => {
+    excelData.forEach(excelrow => (QRCode.toDataURL(excelrow.КодМаркировки).then(url => console.log(url))))
+  }, [excelData])*/
+
+  const SaveQrCodeUrl = () => {
+    const qrCodeCanvas = document.querySelectorAll('canvas');
+    var qrCodeDataUri = [];
+    qrCodeCanvas?.forEach((canvas, index) => (qrCodeDataUri[index] = canvas.toDataURL('image/jpg', 0.3)))
+    setQrCodeUrl(qrCodeDataUri)
+    return qrCodeDataUri;
+  }
+
   return (
     <div id="container" style={{ width: '100%', height: '100%', minHeight: '100%', minWidth: '100%' }}>
       <div id="btn-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 180, minWidth: 1000 }}>
         <input disabled={!isSelectedFile} className='btn' value={show ? 'Nascondi anteprima Pdf' : 'Mostra anteprima Pdf'} type='button' onClick={() => {
           if (isSelectedFile === true) {
             const qrCodeCanvas = document.querySelectorAll('canvas');
-            var qrCodeDataUri = [];
-            qrCodeCanvas?.forEach((canvas, index) => (qrCodeDataUri[index] = canvas.toDataURL('image/jpg', 0.3)))
-            setQrCodeUrl(qrCodeDataUri)
+            SaveQrCodeUrl()
             setShow(!show)
           }
         }} />
@@ -32,11 +43,11 @@ function App() {
             setIsSelectedFile(false)
           }
         }} />
-        <LazyDownloadPDFButton disabled={!isSelectedFile} exceldata={excelData} qrCodeUrl={qrCodeUrl} />
+        <LazyDownloadPDFButton SaveQrCodeUrl = {SaveQrCodeUrl} disabled={!isSelectedFile} exceldata={excelData}  />
       </div>
       <div id="main-content" style={{ borderTopWidth: 2, borderTopStyle: 'solid', borderColor: 'gray' }}>
         {isSelectedFile === false && <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}><span>Seleziona un file con estensione: ".xls"</span></div>}
-        {show ? <PdfPages exceldata={excelData} qrCodeUrl={qrCodeUrl} /> : (isSelectedFile === true && <BodyTableRow  excelData={excelData} />)}
+        {show ? <PdfPages exceldata={excelData} qrCodeUrl={qrCodeUrl} /> : (isSelectedFile === true && <BodyTableRow excelData={excelData} />)}
       </div>
 
       <div id="footer" style={show ? { display: 'none' } : null}></div>
