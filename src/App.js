@@ -12,10 +12,6 @@ function App() {
   const [qrCodeUrl, setQrCodeUrl] = useState([]);
   const [isSelectedFile, setIsSelectedFile] = useState(null);
 
-  /*useEffect(() => {
-    excelData.forEach(excelrow => (QRCode.toDataURL(excelrow.КодМаркировки).then(url => console.log(url))))
-  }, [excelData])*/
-
   const SaveQrCodeUrl = () => {
     const qrCodeCanvas = document.querySelectorAll('canvas');
     var qrCodeDataUri = [];

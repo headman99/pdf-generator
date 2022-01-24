@@ -8,13 +8,13 @@ const RowDetail = ({ row}) => {
         <div id='row-container'>
             <div id='flexContainer'>
                 <div id="sinistro" style={style}>
-                    <div className='row-text' style={{fontSize:'0.9vw'}}>
+                    <div className='row-text' style={{fontSize:'1.1vw'}}>
                         <p>{row.Номенклатура.split('.')[1].split(',')[0]} &nbsp;&nbsp;{row.Номенклатура.split('.')[0].split(' ')[0] + ' ('+ row.Номенклатура.split('.')[2] + ' )'}</p>  
                     </div>
                     <div style={{fontWeight:'bold',fontSize:'1.5vw'}}>
                         <p>{row.GTIN}</p>
                     </div>
-                    <div style={{fontSize:'0.9vw'}}>
+                    <div style={{fontSize:'1.1vw'}}>
                         <p>{`(${row.КодМаркировки.substr(0,2)})${row.КодМаркировки.substr(2,14)}(${row.КодМаркировки.substr(16,2)})${row.КодМаркировки.substr(18,13)}`}</p>
                         
                     </div>   
