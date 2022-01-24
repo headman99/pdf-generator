@@ -29,7 +29,6 @@ function App() {
       <div id="btn-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 180, minWidth: 1000 }}>
         <input disabled={!isSelectedFile} className='btn' value={show ? 'Nascondi anteprima Pdf' : 'Mostra anteprima Pdf'} type='button' onClick={() => {
           if (isSelectedFile === true) {
-            const qrCodeCanvas = document.querySelectorAll('canvas');
             SaveQrCodeUrl()
             setShow(!show)
           }
