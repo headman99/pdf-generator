@@ -43,7 +43,7 @@ function App() {
             setIsSelectedFile(false)
           }
         }} />
-        <LazyDownloadPDFButton SaveQrCodeUrl = {SaveQrCodeUrl} disabled={!isSelectedFile} exceldata={excelData}  />
+        <LazyDownloadPDFButton SaveQrCodeUrl={SaveQrCodeUrl} disabled={!isSelectedFile} exceldata={excelData}  />
       </div>
       <div id="main-content" style={{ borderTopWidth: 2, borderTopStyle: 'solid', borderColor: 'gray' }}>
         {isSelectedFile === false && <div style={{ width: '100%', display: 'flex', justifyContent: 'center' }}><span>Seleziona un file con estensione: ".xls"</span></div>}
