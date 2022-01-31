@@ -25,14 +25,16 @@ function App() {
       <div id="btn-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 180, minWidth: 1000 }}>
         <input disabled={!isSelectedFile} className='btn' value={show ? 'Nascondi anteprima Pdf' : 'Mostra anteprima Pdf'} type='button' onClick={() => {
           if (isSelectedFile === true) {
-            SaveQrCodeUrl()
+            if(qrCodeUrl.length < 1)
+              SaveQrCodeUrl()
             setShow(!show)
           }
         }} />
         <input className='btn' type="file" accept='.xls' color='blue' onChange={(e) => {
           const file = e.target.files[0];
           if (file.name.split('.').pop() === 'xls') {
-            readExcel(file).then((data) => setExcelData(data))
+            readExcel(file).then((data) => {setExcelData(data)})
+            setQrCodeUrl([])
             setIsSelectedFile(true)
           } else {
             setIsSelectedFile(false)

@@ -3341,6 +3341,11 @@
   "resolved" "https://registry.npmjs.org/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz"
   "version" "3.0.0"
 
+"bwip-js@^3.0.4":
+  "integrity" "sha512-Gx1NYJsrAs99Ry5OQNPtbwwT7dw9kAhJDneiw1imfMmxEb9GHYl+7VeBxMZTFLgew8eLadfHPqUui5HhTYb6fw=="
+  "resolved" "https://registry.npmjs.org/bwip-js/-/bwip-js-3.0.4.tgz"
+  "version" "3.0.4"
+
 "bytes@3.0.0":
   "integrity" "sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg="
   "resolved" "https://registry.npmjs.org/bytes/-/bytes-3.0.0.tgz"

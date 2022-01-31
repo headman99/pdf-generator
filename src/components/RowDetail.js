@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../CSS/RowDetail.css'
-import QRCode from "qrcode.react";
+import bwipjs from 'bwip-js';
 
+const RowDetail = ({ row }) => {
+    const КодМаркировки = row.КодМаркировки.toString()
+    const GTIN = row.GTIN.toString()
+    useEffect(() => {
 
-const RowDetail = ({ row}) => { 
+        try {
+            // The return value is the canvas element
+            let canvas = bwipjs.toCanvas(GTIN, {
+                bcid: 'datamatrix',       // Barcode type
+                text: КодМаркировки,    // Text to encode
+                scale: 8,               // 3x scaling factor
+                height: 10,              // Bar height, in millimeters
+                width: 10,
+                includetext: true,            // Show human-readable text
+                textxalign: 'center',        // Always good to set this
+            });
+        } catch (e) {
+            // `e` may be a string or Error object
+        }
+    }, [])
+
     return (
         <div id='row-container'>
             <div id='flexContainer'>
                 <div id="sinistro" style={style}>
-                    <div className='row-text' style={{fontSize:'1.1vw'}}>
-                        <p>{row.Номенклатура.split('.')[1].split(',')[0]} &nbsp;&nbsp;{row.Номенклатура.split('.')[0].split(' ')[0] + ' ('+ row.Номенклатура.split('.')[2] + ' )'}</p>  
+                    <div className='row-text' style={{ fontSize: '1.1vw' }}>
+                        <p>{row.Номенклатура.split('.')[1].split(',')[0]} &nbsp;&nbsp;{row.Номенклатура.split('.')[0].split(' ')[0] + ' (' + row.Номенклатура.split('.')[2] + ' )'}</p>
                     </div>
-                    <div style={{fontWeight:'bold',fontSize:'1.5vw'}}>
+                    <div style={{ fontWeight: 'bold', fontSize: '1.5vw' }}>
                         <p>{row.GTIN}</p>
                     </div>
-                    <div style={{fontSize:'1.1vw'}}>
-                        <p>{`(${row.КодМаркировки.substr(0,2)})${row.КодМаркировки.substr(2,14)}(${row.КодМаркировки.substr(16,2)})${row.КодМаркировки.substr(18,13)}`}</p>
-                        
-                    </div>   
+                    <div style={{ fontSize: '1.1vw' }}>
+                        <p>{`(${row.КодМаркировки.substr(0, 2)})${row.КодМаркировки.substr(2, 14)}(${row.КодМаркировки.substr(16, 2)})${row.КодМаркировки.substr(18, 13)}`}</p>
+                    </div>
                 </div >
                 <div id='right'>
-                    <QRCode style={{ width: 170, height: 170 }} id={row.КодМаркировки} value={row.КодМаркировки} renderAs='canvas' />
+                    <canvas id={row.GTIN.toString()}></canvas>
                 </div>
             </div>
         </div>
@@ -28,7 +46,7 @@ const RowDetail = ({ row}) => {
 };
 
 const style = {
-    gap:'30px',
+    gap: '30px',
     display: 'flex',
     flexDirection: 'column',
 };
