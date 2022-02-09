@@ -12,27 +12,62 @@
     height: 2%;
 }
 
-#dropzone{
-    width: 100%;
-    height: 100%;
-}
 
-#curtain{
+#dropzone{
     width:100%;
-    height:78%;
+    height:80%;
     justify-content:center;
     align-items:center;
     display: flex;
-    position: absolute;
+    background-color: rgb(236, 236, 236);
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 20px;
 }
 
 #fileTitle{
-    width: 100%;
     text-align: center;
-    padding-bottom: 1%;
+    padding:15px;
     font-size: large;
+    border:1px solid;
+    border-top:none;
+    border-radius: 0 0 10px 10px;
+    border-color: lightgray;
+    background-color: rgb(236, 236, 236);
+   
+    
 }
 
+#btn-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+    min-width: 1000px;
+    height: 30%; 
+    width: 100%;
+    flex-direction: row; 
+}
+.inputBtn{
+     height:20%;
+     width: 100%;
+}
+.bottone:focus {
+    outline: none;
+  }
+
+.bottone:active {
+    transform: scale(0.98);
+  }
+.bottone{
+    background-color:black;
+    border-radius:5px;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    min-width: 230px;
+}
+  
 
 
 
