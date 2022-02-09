@@ -6,7 +6,7 @@ import PdfDocument from './PdfDocument';
 export const LazyDownloadPDFButton = ({SaveQrCodeUrl,exceldata,disabled}) => {
     return (
         <button 
-            style={disabled?{visibility:'hidden'}:{display:'block'}}
+            style={disabled?{display:'none'}:{display:'block'}}
             className='btn'
             onClick={async () => {
                 const qrCodeUrl = SaveQrCodeUrl()

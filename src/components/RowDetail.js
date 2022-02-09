@@ -1,4 +1,5 @@
 import React, { useEffect} from 'react';
+
 import '../CSS/RowDetail.css'
 import bwipjs from 'bwip-js';
 
@@ -6,7 +7,7 @@ const RowDetail = ({ row }) => {
     useEffect(() => {
         try {
             // The return value is the canvas element
-            bwipjs.toCanvas(`${row.GTIN}`, {
+             bwipjs.toCanvas(`${row.GTIN}`, {
                 bcid: 'datamatrix',       // Barcode type
                 text: row.КодМаркировки,    // Text to encode
                 scale: 8,               // 3x scaling factor
