@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState,useRef } from 'react';
 import PdfPages from './components/PdfPages';
 import '../src/CSS/App.css'
 import { LazyDownloadPDFButton } from './components/LazyDownloadPDFButton ';
@@ -14,10 +14,15 @@ function App() {
   const [qrCodeUrl, setQrCodeUrl] = useState([]);
   const [isSelectedFile, setIsSelectedFile] = useState(null);
   const { width, height } = useWindowSize()
+  const [selectedFileName,setSelectedFileName] = useState('')
+  const inputFile = useRef();
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: '.xls',
     onDrop: useCallback((file) => {
-      if (file[0].name.split('.').pop() === 'xls') {
+      if (file!==undefined && file[0].name.split('.').pop() === 'xls') {
+        setSelectedFileName(file[0].name)
+        inputFile.current.value=''
         readExcel(file[0]).then((data) => { setExcelData(data) })
         setQrCodeUrl([])
         setIsSelectedFile(true)
@@ -37,7 +42,7 @@ function App() {
   }
 
   return (
-    <div id="container" style={{ width: width, height: height, minHeight: '100%', minWidth: '100%' }}>
+    <div id="container" style={{ width: width, height: height, minHeight: '100%', minWidth: '100%',display:'flex',flexDirection:'column' }}>
       <div id="btn-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: 180, minWidth: 1000, height: '20%', width: '100%' }}>
         <input disabled={!isSelectedFile} className='btn' value={show ? 'Nascondi anteprima Pdf' : 'Mostra anteprima Pdf'} type='button' onClick={() => {
           if (isSelectedFile === true) {
@@ -46,9 +51,10 @@ function App() {
             setShow(!show)
           }
         }} />
-        <input className='btn' type="file" accept='.xls' color='blue' onChange={(e) => {
-          const file = e.target.files[0];
-          if (file.name.split('.').pop() === 'xls') {
+        <input ref={inputFile} id="selector" className='btn' type="file" accept='.xls' color='blue' onChange={(e) => {
+          const file = e.target?.files[0];
+          if (file!==undefined && file.name.split('.').pop() === 'xls') {
+            setSelectedFileName(file.name)
             readExcel(file).then((data) => { setExcelData(data) })
             setQrCodeUrl([])
             setIsSelectedFile(true)
@@ -57,6 +63,9 @@ function App() {
           }
         }} />
         <LazyDownloadPDFButton SaveQrCodeUrl={SaveQrCodeUrl} disabled={!isSelectedFile} exceldata={excelData} />
+      </div>
+      <div id = "fileTitle">
+        <h3>{selectedFileName}</h3>
       </div>
       <div
         id="main-content"

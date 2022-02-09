@@ -4,7 +4,7 @@ import RowDetail from './RowDetail';
 const BodyTableRow = ({excelData}) => {
     return (
         <div>{
-            excelData.map(data => <RowDetail row={data} />)
+            excelData.map(data => <RowDetail key={data.GTIN} row={data} />)
             }
         </div>
     )
